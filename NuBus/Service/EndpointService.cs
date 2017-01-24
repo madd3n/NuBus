@@ -9,11 +9,9 @@ namespace NuBus.Service
 {
     public class EndpointService : IEndpointService
     {
-        ConcurrentBag<IEndPointConfiguration> _endpoints = 
-            new ConcurrentBag<IEndPointConfiguration>();
+        ConcurrentBag<IEndPointConfiguration> _endpoints = new ConcurrentBag<IEndPointConfiguration>();
 
-        ConcurrentDictionary<Guid, Dictionary<DateTime, IEndPointConfiguration>> _deliveringMessages
-            = new ConcurrentDictionary<Guid, Dictionary<DateTime, IEndPointConfiguration>>();
+        ConcurrentDictionary<Guid, Dictionary<DateTime, IEndPointConfiguration>> _deliveringMessages = new ConcurrentDictionary<Guid, Dictionary<DateTime, IEndPointConfiguration>>();
 
         public event EventHandler<MessageReceivedArgs> HandleMessageReceived;
 
@@ -158,7 +156,7 @@ namespace NuBus.Service
         #region IDisposable Support
         private bool _disposed = false; // To detect redundant calls
 
-        protected virtual void Dispose(bool disposing)
+        public virtual void Dispose(bool disposing)
         {
             if (!_disposed)
             {
@@ -166,7 +164,7 @@ namespace NuBus.Service
                 {
                     _endpoints
                         .ToList()
-                        .ForEach(e => 
+                        .ForEach((Action<IEndPointConfiguration>)(e => 
                         {
                             if (e is IDisposable) 
                             {
@@ -179,7 +177,7 @@ namespace NuBus.Service
                             {
                                 ((IDisposable)adapter).Dispose();
                             }
-                        });
+                        }));
                 }
 
                 _disposed = true;

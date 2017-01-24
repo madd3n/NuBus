@@ -1,12 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Xml;
-using System.Xml.Serialization;
-using NuBus;
-using NuBus.Util;
 
 namespace NuBus.Adapter.Extension
 {

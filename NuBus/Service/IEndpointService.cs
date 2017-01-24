@@ -21,5 +21,7 @@ namespace NuBus.Service
 
         Type GetHandlerFor(string messageFQCN);
         void AcknowledgeMessage(Guid messageID);
+
+        void Dispose(bool disposing);
     }
 }

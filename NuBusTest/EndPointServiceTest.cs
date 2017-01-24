@@ -2,17 +2,22 @@
 
 namespace NuBusTest
 {
-	using NuBus.Service;
+    using FakeItEasy;
+    using NuBus.Service;
 
-	[TestFixture]
+    [TestFixture]
 	public class EndPointServiceTest
 	{ 
 		[Test]
 		public void TestCallToDisposeByUsing()
 		{
-			using (var service = new EndpointService())
+            var fakeService = A.Fake<EndpointService>();
+
+            using (fakeService)
 			{
 			}
+
+            A.CallTo(() => fakeService.Dispose(true)).MustHaveHappened();
 		}
 
 	}

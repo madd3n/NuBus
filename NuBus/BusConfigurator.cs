@@ -71,8 +71,7 @@ namespace NuBus
 
         #region Private Methods
 
-        private void RegisterContainerHandlers(
-            ContainerBuilder builder, IReadOnlyCollection<Type> handlers)
+        private void RegisterContainerHandlers(ContainerBuilder builder, IReadOnlyCollection<Type> handlers)
         {
             Condition.NotNull(handlers);
 
@@ -90,8 +89,7 @@ namespace NuBus
                     });
         }
 
-        private void RegisterContainerMessages(
-            ContainerBuilder builder, IReadOnlyCollection<Type> messages)
+        private void RegisterContainerMessages(ContainerBuilder builder, IReadOnlyCollection<Type> messages)
         {
             Condition.NotNull(messages);
 
